@@ -1,26 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { FaBluetooth } from 'react-icons/fa'
 
-function App() {
+interface IAppProps {}
+
+const App: React.FC<IAppProps> = (props) => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='cool-bg h-screen w-screen grid place-items-center'>
+      <div className='w-32 h-32 border-8 rounded-full animate-pulse opacity-40 absolute animate-ping' />
+      <div className='w-44 h-44 border-8 rounded-full animate-pulse opacity-20 absolute animate-ping' />
+      <div className='w-56 h-56 border-8 rounded-full animate-pulse opacity-20 absolute animate-ping' />
+
+      <button className='relative bg-neutral-50 hover:opacity-80 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center gap-5'>
+        <span>
+          <FaBluetooth size={35} />
+        </span>
+        <span>SCAN</span>
+      </button>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

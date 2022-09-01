@@ -1,5 +1,12 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
+.env
+
+# Firebase
+firebase-debug.log
+firestore-debug.log
+.firebase
+
 # dependencies
 /node_modules
 /.pnp
