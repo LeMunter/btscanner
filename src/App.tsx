@@ -14,7 +14,7 @@ const App: React.FC<IAppProps> = (props) => {
 
   const scanDevices = async () => {
     const foundBtDevice = await navigator.bluetooth.requestDevice(btSettings)
-    .catch((error:any) => { console.log(error.message) })
+    .catch((error:Error) => { console.log(error.message) })
 
     if (foundBtDevice) {
       setBtDevice(foundBtDevice);
