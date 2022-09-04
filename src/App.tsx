@@ -20,6 +20,7 @@ const btSettings = {
 
 const App: React.FC<IAppProps> = (props) => {
   const [btDevice, setBtDevice] = useState<BluetoothDevice | null>(null)
+  const [btGatt, setBtGatt] = useState<BluetoothRemoteGATTServer | null>(null)
   const gaEventTracker = useAnalyticsEventTracker('Home')
 
   const notify = (msg: string, { error = false }) => {
@@ -52,7 +53,12 @@ const App: React.FC<IAppProps> = (props) => {
         })
 
       if (foundBtDevice) {
+        const gatt = await foundBtDevice.gatt?.connect()
+        console.log(gatt)
         setBtDevice(foundBtDevice)
+        if (gatt) {
+          setBtGatt(gatt);
+        }
       }
     } catch (error) {
       notify('Something went wrong :(', { error: true })
@@ -68,9 +74,11 @@ const App: React.FC<IAppProps> = (props) => {
   }
 
   const onDisconnectButtonClick = () => {
-    if (!btDevice) return
-    if (!btDevice.gatt) return
+    if (!btDevice || !btGatt) return
+    if (!btDevice.gatt ) return
+    btGatt.disconnect()
     setBtDevice(null)
+    setBtGatt(null)
   }
 
   return (
