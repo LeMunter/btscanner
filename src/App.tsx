@@ -56,7 +56,6 @@ const App: React.FC<IAppProps> = (props) => {
       if (foundBtDevice) {
         const gatt = await foundBtDevice.gatt?.connect()
         setBtDevice(foundBtDevice)
-        console.log(await gatt?.getPrimaryService('device_information'))
         if (gatt) {
           setBtGatt(gatt)
         }
