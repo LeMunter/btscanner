@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { FaBluetooth } from 'react-icons/fa'
 import './firebase'
-import useAnalyticsEventTracker from 'hooks/useAnalyticsEventTracker'
 import { ToastContainer, toast, cssTransition, ToastOptions } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import 'animate.css/animate.min.css'
@@ -22,7 +21,6 @@ const btSettings = {
 const App: React.FC<IAppProps> = (props) => {
   const [btDevice, setBtDevice] = useState<BluetoothDevice | null>(null)
   const [btGatt, setBtGatt] = useState<BluetoothRemoteGATTServer | null>(null)
-  const gaEventTracker = useAnalyticsEventTracker('Home')
 
   const notify = (msg: string, { error = false }) => {
     const options: ToastOptions = {
@@ -41,7 +39,6 @@ const App: React.FC<IAppProps> = (props) => {
 
   const onScanButtonClick = async () => {
     if (!isBluetoothEnabled()) {
-      gaEventTracker('No bluetooth')
       notify("Browser doesn't support bluetooth", { error: true })
       return
     }
