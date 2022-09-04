@@ -84,7 +84,7 @@ const App: React.FC<IAppProps> = (props) => {
 
   return (
     <div className='cool-bg h-screen w-screen grid place-items-center '>
-      {btDevice && <div className='font-bold text-3xl text-neutral-50'>{btDevice.name}</div>}
+      {btDevice && <div className='font-bold text-xl text-neutral-50'>{btDevice.name}</div>}
       <div className='grid place-items-center'>
         {btDevice ? (
           <button
