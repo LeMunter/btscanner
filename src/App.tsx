@@ -14,6 +14,7 @@ const bounce = cssTransition({
 interface IAppProps {}
 
 const btSettings = {
+  // filters: [{ services: ['battery_service'] }],
   acceptAllDevices: true,
   optionalServices: ['device_information'],
 }
@@ -54,10 +55,10 @@ const App: React.FC<IAppProps> = (props) => {
 
       if (foundBtDevice) {
         const gatt = await foundBtDevice.gatt?.connect()
-        console.log(gatt)
         setBtDevice(foundBtDevice)
+        console.log(await gatt?.getPrimaryService('device_information'))
         if (gatt) {
-          setBtGatt(gatt);
+          setBtGatt(gatt)
         }
       }
     } catch (error) {
@@ -75,33 +76,31 @@ const App: React.FC<IAppProps> = (props) => {
 
   const onDisconnectButtonClick = () => {
     if (!btDevice || !btGatt) return
-    if (!btDevice.gatt ) return
+    if (!btDevice.gatt) return
     btGatt.disconnect()
     setBtDevice(null)
     setBtGatt(null)
   }
 
   return (
-    <div className='cool-bg h-screen w-screen grid place-items-center'>
+    <div className='cool-bg h-screen w-screen grid place-items-center '>
+      {btDevice && <div className='font-bold text-3xl text-neutral-50'>{btDevice.name}</div>}
       <div className='grid place-items-center'>
         {btDevice ? (
-          <>
-            <div>{btDevice.name}</div>
-            <button
-              className='relative bg-gradient-to-tr from-red-600 via-pink-700 to-red-700 hover:opacity-80 text-white font-bold py-2 px-4 rounded inline-flex items-center gap-5'
-              onClick={onDisconnectButtonClick}
-            >
-              <span>
-                <FaBluetooth size={35} />
-              </span>
-              <span>Disconnect</span>
-            </button>
-          </>
+          <button
+            className='relative bg-gradient-to-tr from-red-600 via-pink-700 to-red-700 hover:opacity-80 text-white font-bold py-2 px-4 rounded inline-flex items-center gap-5'
+            onClick={onDisconnectButtonClick}
+          >
+            <span>
+              <FaBluetooth size={35} />
+            </span>
+            <span>Disconnect</span>
+          </button>
         ) : (
           <>
-            <div className='w-32 h-32 border-8 rounded-full absolute animate-pulse opacity-40 animate-ping' />
-            <div className='w-44 h-44 border-8 rounded-full absolute animate-pulse opacity-20 animate-ping' />
-            <div className='w-56 h-56 border-8 rounded-full absolute animate-pulse opacity-20 animate-ping' />
+            <div className='w-32 h-32 border-8 rounded-full fixed animate-pulse opacity-40 animate-ping' />
+            <div className='w-44 h-44 border-8 rounded-full fixed animate-pulse opacity-20 animate-ping' />
+            <div className='w-56 h-56 border-8 rounded-full fixed animate-pulse opacity-20 animate-ping' />
             <button
               className='relative bg-neutral-50 hover:opacity-80 text-slate-800 font-bold py-2 px-4 rounded inline-flex items-center gap-5'
               onClick={onScanButtonClick}
