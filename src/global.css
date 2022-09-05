@@ -10,3 +10,9 @@
     background-size: cover;
   }
 }
+
+@layer utilities {
+  body {
+    @apply font-lato;
+  }
+}

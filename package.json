@@ -17,7 +17,6 @@
     "nth-check": ">=2.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-ga": "^3.3.1",
     "react-icons": "^4.4.0",
     "react-scripts": "5.0.1",
     "react-toastify": "^9.0.8",
@@ -29,6 +28,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "deploy": "npm run build && firebase deploy",
     "lint": "eslint src/**/*.{js,jsx,ts,tsx,json}",
     "lint:fix": "eslint --fix 'src/**/*.{js,jsx,ts,tsx,json}'",
     "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"

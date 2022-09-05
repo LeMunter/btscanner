@@ -4,6 +4,7 @@ import './firebase'
 import { ToastContainer, toast, cssTransition, ToastOptions } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import 'animate.css/animate.min.css'
+import logo from './ut_logo.svg'
 
 const bounce = cssTransition({
   enter: 'animate__animated animate__bounceIn',
@@ -80,7 +81,8 @@ const App: React.FC<IAppProps> = (props) => {
 
   return (
     <div className='cool-bg h-screen w-screen grid place-items-center '>
-      {btDevice && <div className='font-bold text-xl text-neutral-50'>{btDevice.name}</div>}
+      <h1 className='fixed top-5 font-black text-2xl text-white'>Bluetooth Scanner</h1>
+      {btDevice && <h2 className='font-bold text-xl text-neutral-50'>{btDevice.name}</h2>}
       <div className='grid place-items-center'>
         {btDevice ? (
           <button
@@ -98,13 +100,15 @@ const App: React.FC<IAppProps> = (props) => {
             <div className='w-44 h-44 border-8 rounded-full fixed animate-pulse opacity-20 animate-ping' />
             <div className='w-56 h-56 border-8 rounded-full fixed animate-pulse opacity-20 animate-ping' />
             <button
-              className='relative bg-neutral-50 hover:opacity-80 text-slate-800 font-bold py-2 px-4 rounded inline-flex items-center gap-5'
+              className='relative bg-neutral-50 hover:opacity-80 text-slate-800 font-bold py-2 px-4 rounded-full items-center gap-5 w-32 h-32 grid place-items-center'
               onClick={onScanButtonClick}
             >
-              <span>
-                <FaBluetooth size={35} />
+              <span className='items-center flex flex-col'>
+                <span>
+                  <FaBluetooth size={35} />
+                </span>
+                <span>SCAN</span>
               </span>
-              <span>SCAN</span>
             </button>
           </>
         )}
@@ -113,6 +117,19 @@ const App: React.FC<IAppProps> = (props) => {
       <span className='absolute'>
         <ToastContainer limit={3} />
       </span>
+      <footer className='fixed bottom-0 text-neutral-50 w-56 py-5'>
+        <a
+          className='flex items-center justify-center gap-2'
+          href='https://uptilt.se'
+          target='_blank'
+          rel='noreferrer'
+        >
+          <span className='flex flex-shrink font-semibold'>
+            Made by&nbsp;<span className='font-bold'>UPTILT</span>
+          </span>
+          <img className='w-1/4 flex' src={logo} />
+        </a>
+      </footer>
     </div>
   )
 }

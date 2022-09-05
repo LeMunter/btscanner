@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 522.46 522.46">
+  <g id="a" data-name="Layer 1"/>
+  <g id="b" data-name="Layer 2">
+    <g id="c" data-name="Layer 1">
+      <rect x="68.94" y="68.94" width="384.58" height="384.58" rx="50" ry="50" transform="translate(261.23 -108.2) rotate(45)" style="fill: #3d9970; stroke: #fff; stroke-miterlimit: 10; stroke-width: 20px;"/>
+      <g id="d" data-name="b">
+        <g id="e" data-name="c">
+          <g>
+            <rect x="304.49" y="218.16" width="21.7" height="120.39" style="fill: #fff;"/>
+            <path d="M259.71,181.15v.02c-11.77,.39-21.19,10.05-21.19,21.91v83.39c0,24.45-10.73,36.55-33.35,36.55s-33.13-12.1-33.13-36.55v-83.62c0-11.98-9.71-21.7-21.7-21.7v106.92c0,31.3,18.95,53.24,54.82,53.24s55.28-21.93,55.28-53.24v-80.13c0-4.58,3.71-8.28,8.28-8.28h101.1l2.28-18.5h-112.4Z" style="fill: #fff;"/>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
