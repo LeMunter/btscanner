@@ -127,7 +127,7 @@ const App: React.FC<IAppProps> = (props) => {
           <span className='flex flex-shrink font-semibold'>
             <span className='font-bold'>UPTILT</span>
           </span>
-          <img className='w-1/4 flex' src={logo} />
+          <img className='w-1/5 flex' src={logo} />
         </a>
       </footer>
     </div>
