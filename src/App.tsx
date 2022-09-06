@@ -125,7 +125,7 @@ const App: React.FC<IAppProps> = (props) => {
           rel='noreferrer'
         >
           <span className='flex flex-shrink font-semibold'>
-            Made by&nbsp;<span className='font-bold'>UPTILT</span>
+            <span className='font-bold'>UPTILT</span>
           </span>
           <img className='w-1/4 flex' src={logo} />
         </a>
