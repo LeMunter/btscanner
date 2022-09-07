@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { FaBluetooth } from 'react-icons/fa'
 import './firebase'
 import { ToastContainer, toast, cssTransition, ToastOptions } from 'react-toastify'
@@ -80,8 +80,8 @@ const App: React.FC<IAppProps> = (props) => {
   }
 
   return (
-    <div className='cool-bg h-screen w-screen grid place-items-center '>
-      <h1 className='fixed top-5 font-black text-2xl text-white'>Bluetooth Scanner</h1>
+    <div className='relative cool-bg h-screen w-screen grid place-items-center overflow-hidden'>
+      <h1 className='absolute top-5 font-black text-2xl text-white'>Bluetooth Scanner</h1>
       {btDevice && <h2 className='font-bold text-xl text-neutral-50'>{btDevice.name}</h2>}
       <div className='grid place-items-center'>
         {btDevice ? (
@@ -95,12 +95,12 @@ const App: React.FC<IAppProps> = (props) => {
             <span>Disconnect</span>
           </button>
         ) : (
-          <>
-            <div className='w-32 h-32 border-8 rounded-full fixed animate-pulse opacity-40 animate-ping' />
-            <div className='w-44 h-44 border-8 rounded-full fixed animate-pulse opacity-20 animate-ping' />
-            <div className='w-56 h-56 border-8 rounded-full fixed animate-pulse opacity-20 animate-ping' />
+          <div className='relative grid place-items-center'>
+            <div className='w-32 h-32 border-8 rounded-full absolute opacity-40 motion-safe:animate-ping' />
+            <div className='w-44 h-44 border-8 rounded-full absolute opacity-20 motion-safe:animate-ping' />
+            <div className='w-56 h-56 border-8 rounded-full absolute opacity-20 motion-safe:animate-ping' />
             <button
-              className='relative bg-neutral-50 hover:opacity-80 text-slate-800 font-bold py-2 px-4 rounded-full items-center gap-5 w-32 h-32 grid place-items-center'
+              className='absolute bg-neutral-50 hover:opacity-80 text-slate-800 font-bold py-2 px-4 rounded-full items-center gap-5 w-32 h-32 grid place-items-center'
               onClick={onScanButtonClick}
             >
               <span className='items-center flex flex-col'>
@@ -110,14 +110,14 @@ const App: React.FC<IAppProps> = (props) => {
                 <span>SCAN</span>
               </span>
             </button>
-          </>
+          </div>
         )}
       </div>
 
       <span className='absolute'>
         <ToastContainer limit={3} />
       </span>
-      <footer className='fixed bottom-0 text-neutral-50 w-56 py-5'>
+      <footer className='absolute bottom-0 text-neutral-50 w-56 py-5'>
         <a
           className='flex items-center justify-center gap-2'
           href='https://uptilt.se'
