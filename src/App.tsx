@@ -5,6 +5,7 @@ import { ToastContainer, toast, cssTransition, ToastOptions } from 'react-toasti
 import 'react-toastify/dist/ReactToastify.css'
 import 'animate.css/animate.min.css'
 import logo from './ut_logo.svg'
+import btLogo from './bt_logo.svg'
 
 const bounce = cssTransition({
   enter: 'animate__animated animate__bounceIn',
@@ -82,10 +83,14 @@ const App: React.FC<IAppProps> = (props) => {
   return (
     <div className='relative cool-bg h-screen w-screen grid place-items-center overflow-hidden'>
       <div className='absolute top-5 text-white w-1/4'>
-        <h1 className='font-black text-2xl '>Bluetooth Scanner</h1>
+        <h1 className='font-black text-2xl flex items-center gap-2'>
+          <span>
+            <img className='w-8 h-8' src={btLogo} />
+          </span>
+          Bluetooth Scanner
+        </h1>
         <p className='text-neutral-100'>
-          Scan for bluetooth devices near you! Currently no support for Firefox and Safari. The
-          Bluetooth web API is still under development.
+          Scan for bluetooth devices near you! Currently no support for Firefox and Safari.
         </p>
       </div>
       {btDevice && <h2 className='font-bold text-xl text-neutral-50'>{btDevice.name}</h2>}
