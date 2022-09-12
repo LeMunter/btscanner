@@ -81,64 +81,70 @@ const App: React.FC<IAppProps> = (props) => {
   }
 
   return (
-    <div className='relative cool-bg h-screen w-screen grid place-items-center overflow-hidden'>
-      <div className='absolute top-5 text-white w-1/4'>
-        <h1 className='font-black text-2xl flex items-center gap-2'>
-          <span>
-            <img className='w-8 h-8' src={btLogo} />
-          </span>
-          Bluetooth Scanner
-        </h1>
-        <p className='text-neutral-100'>
-          Scan for bluetooth devices near you! Currently no support for Firefox and Safari.
-        </p>
-      </div>
-      {btDevice && <h2 className='font-bold text-xl text-neutral-50'>{btDevice.name}</h2>}
-      <div className='grid place-items-center'>
-        {btDevice ? (
-          <button
-            className='relative bg-gradient-to-tr from-red-600 via-pink-700 to-red-700 hover:opacity-80 text-white font-bold py-2 px-4 rounded inline-flex items-center gap-5'
-            onClick={onDisconnectButtonClick}
-          >
+    <div className='relative flex flex-col h-screen overflow-hidden'>
+      <header className='w-full p-4 grid place-items-center'>
+        <div>
+          <h1 className='flex font-black text-2xl gap-2'>
             <span>
-              <FaBluetooth size={35} />
+              <img className='w-8 h-8' src={btLogo} />
             </span>
-            <span>Disconnect</span>
-          </button>
-        ) : (
-          <div className='relative grid place-items-center'>
-            <div className='w-32 h-32 border-8 rounded-full absolute opacity-40 motion-safe:animate-ping' />
-            <div className='w-44 h-44 border-8 rounded-full absolute opacity-20 motion-safe:animate-ping' />
-            <div className='w-56 h-56 border-8 rounded-full absolute opacity-20 motion-safe:animate-ping' />
-            <button
-              className='absolute bg-neutral-50 hover:opacity-80 text-slate-800 font-bold py-2 px-4 rounded-full items-center gap-5 w-32 h-32 grid place-items-center'
-              onClick={onScanButtonClick}
-            >
-              <span className='items-center flex flex-col'>
-                <span>
-                  <FaBluetooth size={35} />
-                </span>
-                <span>SCAN</span>
-              </span>
-            </button>
+            Bluetooth Scanner
+          </h1>
+          <p className='text-neutral-100'>
+            Scan for bluetooth devices near you! Currently no support for Firefox and Safari.
+          </p>
+        </div>
+      </header>
+      <main className='flex-1 overflow-hidden'>
+        <div className='min-h-screen grid grid-rows-5'>
+          <div className='row-start-3'>
+            {btDevice ? (
+              <div className='grid place-items-center'>
+                <h2 className='font-bold text-xl text-neutral-50'>{btDevice.name}</h2>
+                <button
+                  className='relative bg-gradient-to-tr from-red-600 via-pink-700 to-red-700 hover:opacity-80 text-white font-bold py-2 px-4 rounded inline-flex items-center gap-5'
+                  onClick={onDisconnectButtonClick}
+                >
+                  <span>
+                    <FaBluetooth size={35} />
+                  </span>
+                  <span>Disconnect</span>
+                </button>
+              </div>
+            ) : (
+              <div className='relative grid place-items-center'>
+                <div className='w-32 h-32 border-8 rounded-full absolute opacity-40 motion-safe:animate-ping' />
+                <div className='w-44 h-44 border-8 rounded-full absolute opacity-20 motion-safe:animate-ping' />
+                <div className='w-56 h-56 border-8 rounded-full absolute opacity-20 motion-safe:animate-ping' />
+                <button
+                  className='absolute bg-neutral-50 hover:opacity-80 text-slate-800 font-bold py-2 px-4 rounded-full items-center gap-5 w-32 h-32 grid place-items-center'
+                  onClick={onScanButtonClick}
+                >
+                  <span className='items-center flex flex-col'>
+                    <span>
+                      <FaBluetooth size={35} />
+                    </span>
+                    <span>SCAN</span>
+                  </span>
+                </button>
+              </div>
+            )}
           </div>
-        )}
-      </div>
 
-      <span className='absolute'>
-        <ToastContainer limit={3} />
-      </span>
-      <footer className='absolute bottom-0 text-neutral-50 w-56 py-5'>
+          <span className='absolute'>
+            <ToastContainer limit={3} />
+          </span>
+        </div>
+      </main>
+      <footer className='w-full grid place-items-center p-4 fixed bottom-0'>
         <a
-          className='flex items-center justify-center gap-2'
+          className='text-neutral-50 font-bold flex justify-center items-center gap-2 w-fit'
           href='https://uptilt.se'
           target='_blank'
           rel='noreferrer'
         >
-          <span className='flex flex-shrink font-semibold'>
-            <span className='font-bold'>UPTILT</span>
-          </span>
-          <img className='w-1/5 flex' src={logo} />
+          UPTILT
+          <img className='w-12' src={logo} />
         </a>
       </footer>
     </div>
